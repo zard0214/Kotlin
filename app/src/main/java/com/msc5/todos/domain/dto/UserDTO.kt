@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class UserDTO (
 
-    @SerializedName("pk")
-    var pk: Int,
+    @SerializedName("id")
+    var id: Int,
 
     @SerializedName("username")
     var username: String,

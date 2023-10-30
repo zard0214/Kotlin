@@ -9,7 +9,7 @@ class UserDTOMapper : DomainMapper<UserDTO, User> {
 
     override fun map2Model(model: UserDTO): User {
         return User(
-            id = model.pk,
+            id = model.id,
             username = model.username,
             password = model.password,
             email = model.email,
@@ -18,7 +18,7 @@ class UserDTOMapper : DomainMapper<UserDTO, User> {
 
     override fun map2DTOModel(domainModel: User): UserDTO {
         return UserDTO(
-            pk = domainModel.id,
+            id = domainModel.id,
             username = domainModel.username,
             password = domainModel.password,
             email = domainModel.email,
