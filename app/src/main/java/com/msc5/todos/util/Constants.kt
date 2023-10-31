@@ -1,3 +1,0 @@
-package com.msc5.todos.util
-
-const val MODE = "Debug" // Debug, Release .....

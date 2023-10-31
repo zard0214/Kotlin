@@ -1,0 +1,3 @@
+package cn.shef.msc5.todo.utilities
+
+const val MODE = "Debug" // Debug, Release .....
