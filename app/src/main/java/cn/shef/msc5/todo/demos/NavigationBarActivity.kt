@@ -59,6 +59,7 @@ fun BottomNavigation() {
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
+                //Change the icon using getIconForScreen function
                 icon = { Icon(getIconForScreen(item), contentDescription = null) },
                 label = { Text(item) },
                 selected = selectedItem == item,
