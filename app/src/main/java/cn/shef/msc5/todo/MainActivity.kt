@@ -1,6 +1,7 @@
 package cn.shef.msc5.todo
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.startActivity
 import cn.shef.msc5.todo.demos.NavigationBarActivity
 import cn.shef.msc5.todo.demos.SelectionActivity
@@ -27,7 +29,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TodoTheme {
+            MaterialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -59,5 +61,12 @@ fun MainScreen() {
             Text("Selection")
         }
     }
+}
+
+@Preview(name = "Light theme")
+@Preview(name = "Dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun PreviewMainScreen() {
+    MainScreen()
 }
 

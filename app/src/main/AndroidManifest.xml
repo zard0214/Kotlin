@@ -38,6 +38,10 @@
             android:name=".demos.SelectionActivity"
             android:screenOrientation="portrait"
             android:exported="false"></activity>
+        <activity
+            android:name=".demos.TopAppBarActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"></activity>
         <!-- location service -->
         <service
             android:name=".services.LocationService"

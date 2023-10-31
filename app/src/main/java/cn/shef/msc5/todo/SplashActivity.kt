@@ -1,6 +1,7 @@
 package cn.shef.msc5.todo
 
 import android.content.Intent
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import android.os.Handler
 import androidx.activity.ComponentActivity
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,8 +35,8 @@ class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //Using TodoTheme theme
-            TodoTheme {
+            //Using Material theme
+            MaterialTheme {
                 //Surface is a basic building block for displaying content and can be used to wrap other composable to provide a background color,
                 //elevation, padding, and other layout properties.
                 Surface(
@@ -87,7 +89,8 @@ fun SplashScreen() {
 }
 
 //preview this activity
-@Preview
+@Preview(name = "Light theme")
+@Preview(name = "Dark theme", uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewSplashScreen() {
     SplashScreen()
