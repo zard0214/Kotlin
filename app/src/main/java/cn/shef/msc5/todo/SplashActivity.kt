@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,8 +38,7 @@ class SplashActivity : ComponentActivity() {
                 //Surface is a basic building block for displaying content and can be used to wrap other composable to provide a background color,
                 //elevation, padding, and other layout properties.
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     SplashScreen()
                     loadMainActivity()
@@ -78,6 +76,7 @@ fun SplashScreen() {
                 //loading image resource
                 painter = painterResource(R.mipmap.splash),
                 contentDescription = null,
+                //shape of the image
                 contentScale = ContentScale.Crop,
                 //fill the entire screen
                 modifier = Modifier.fillMaxSize()
