@@ -24,13 +24,20 @@ import cn.shef.msc5.todo.ui.theme.TodoTheme
 
 
 /**
- *  splash view to show some ads or app logo
+ * @author Zhecheng Zhao
+ * @registrationNo 220186627
+ * @date Created in 31/10/2023 10:48
+ *
+ *      splash view to show some ads or app logo
  */
 class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            //Using TodoTheme theme
             TodoTheme {
+                //Surface is a basic building block for displaying content and can be used to wrap other composable to provide a background color,
+                //elevation, padding, and other layout properties.
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -42,7 +49,11 @@ class SplashActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * jump to the main activity
+     */
     private fun loadMainActivity() {
+        //waiting 4 seconds in the new thread, using intent to jump to the main activity
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -53,16 +64,22 @@ class SplashActivity : ComponentActivity() {
 
 @Composable
 fun SplashScreen() {
+    //Column or Row, different layout. Sames like linear layout in the xml
     Column(
+        //fill the entire screen
         modifier = Modifier.fillMaxHeight().fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        //Use Box to put elements on top of another.
+        //https://developer.android.com/jetpack/compose/layouts/basics
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
+                //loading image resource
                 painter = painterResource(R.mipmap.splash),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
+                //fill the entire screen
                 modifier = Modifier.fillMaxSize()
             )
         }
@@ -70,6 +87,7 @@ fun SplashScreen() {
     }
 }
 
+//preview this activity
 @Preview
 @Composable
 fun PreviewSplashScreen() {

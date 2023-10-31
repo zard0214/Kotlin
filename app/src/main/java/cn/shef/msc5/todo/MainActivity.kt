@@ -26,6 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cn.shef.msc5.todo.ui.theme.TodoTheme
 
+/**
+ * @author Zhecheng Zhao
+ * @registrationNo 220186627
+ * @date Created in 31/10/2023 10:48
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

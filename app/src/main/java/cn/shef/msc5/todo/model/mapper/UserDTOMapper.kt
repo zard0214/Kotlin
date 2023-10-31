@@ -3,7 +3,11 @@ package cn.shef.msc5.todo.model.mapper
 import com.msc5.todos.domain.UserDTO
 import cn.shef.msc5.todo.model.User
 
-
+/**
+ * @author Zhecheng Zhao
+ * @registrationNo 220186627
+ * @date Created in 31/10/2023 10:48
+ */
 class UserDTOMapper : DomainMapper<UserDTO, User> {
 
     override fun map2Model(model: UserDTO): User {
