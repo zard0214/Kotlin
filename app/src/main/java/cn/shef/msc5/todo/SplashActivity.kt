@@ -22,6 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import cn.shef.msc5.todo.ui.theme.TodoTheme
+import cn.shef.msc5.todo.utilities.DELAY_TIME
 
 
 /**
@@ -58,7 +59,7 @@ class SplashActivity : ComponentActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        },4000)
+        }, DELAY_TIME)
     }
 }
 

@@ -15,3 +15,7 @@ const val NAVIGATION_HOME = "Home"
 const val NAVIGATION_POST = "Post"
 
 const val NAVIGATION_PROFILE = "Profile"
+
+
+//delay times
+const val DELAY_TIME = 4000L

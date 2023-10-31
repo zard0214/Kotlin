@@ -1,4 +1,4 @@
-package cn.shef.msc5.todo.demos
+package cn.shef.msc5.todo.demos.ui.appbars
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -49,13 +49,6 @@ class TopAppBarActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LargeTopAppBar() {
-//        title: @Composable () -> Unit,
-//        modifier: Modifier = Modifier,
-//        navigationIcon: @Composable () -> Unit = {},
-//        actions: @Composable RowScope.() -> Unit = {},
-//        windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
-//        colors: TopAppBarColors = TopAppBarDefaults.largeTopAppBarColors(),
-//        scrollBehavior: TopAppBarScrollBehavior? = null
 
     LargeTopAppBar(
         scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(),

@@ -7,11 +7,23 @@ package cn.shef.msc5.todo.model
  */
 data class User (
 
+    /**
+     * user pk
+     */
     val id: Int,
 
+    /**
+     * user name
+     */
     val username: String,
 
+    /**
+     * user password
+     */
     val password: String,
 
+    /**
+     * user email
+     */
     val email: String,
 )

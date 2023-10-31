@@ -15,10 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.content.ContextCompat.startActivity
-import cn.shef.msc5.todo.demos.NavigationBarActivity
-import cn.shef.msc5.todo.demos.SelectionActivity
-import cn.shef.msc5.todo.ui.theme.TodoTheme
+import cn.shef.msc5.todo.demos.ui.navigation.NavigationBarActivity
 
 /**
  * @author Zhecheng Zhao
@@ -53,12 +50,6 @@ fun MainScreen() {
 //            startActivity(context, Intent(context, NavigationBarActivity::class.java), null)
         }) {
             Text("NavigationBar")
-        }
-        Button(onClick = {
-            //jump to main activity
-            context.startActivity(Intent(context, SelectionActivity::class.java))
-        }) {
-            Text("Selection")
         }
     }
 }

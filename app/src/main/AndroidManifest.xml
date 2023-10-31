@@ -30,23 +30,19 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:exported="false"></activity>
-        <activity
-            android:name=".demos.NavigationBarActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"></activity>
-        <activity
-            android:name=".demos.SelectionActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"></activity>
-        <activity
-            android:name=".demos.TopAppBarActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"></activity>
-        <!-- location service -->
-        <service
-            android:name=".services.LocationService"
-            android:screenOrientation="portrait"
-            android:exported="false"></service>
+<!--        <activity-->
+<!--            android:name=".demos.ui.navigation.NavigationBarActivity"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:exported="false"></activity>-->
+<!--        <activity-->
+<!--            android:name=".demos.ui.appbars.TopAppBarActivity"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:exported="false"></activity>-->
+<!--        &lt;!&ndash; location service &ndash;&gt;-->
+<!--        <service-->
+<!--            android:name=".services.LocationService"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:exported="false"></service>-->
 
         <!-- demos -->
     </application>
