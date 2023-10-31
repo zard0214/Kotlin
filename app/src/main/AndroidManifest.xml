@@ -31,11 +31,7 @@
             android:screenOrientation="portrait"
             android:exported="false"></activity>
         <activity
-            android:name=".ToDoListActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ToDoDetailActivity"
+            android:name=".demos.NavigationBarActivity"
             android:screenOrientation="portrait"
             android:exported="false"></activity>
         <!-- location service -->
@@ -43,6 +39,8 @@
             android:name=".services.LocationService"
             android:screenOrientation="portrait"
             android:exported="false"></service>
+
+        <!-- demos -->
     </application>
 
     <!-- internet permission -->
