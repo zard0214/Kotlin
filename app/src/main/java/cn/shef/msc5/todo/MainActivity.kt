@@ -13,6 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat.startActivity
+import cn.shef.msc5.todo.demos.NavigationBarActivity
 import cn.shef.msc5.todo.ui.theme.TodoTheme
 
 /**
@@ -39,14 +41,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
-    //get package context
+    //get context
     val context = LocalContext.current
     Column {
         Button(onClick = {
             //jump to main activity
-            context.startActivity(Intent(context, MainActivity::class.java))
+            context.startActivity(Intent(context, NavigationBarActivity::class.java))
+//            startActivity(context, Intent(context, NavigationBarActivity::class.java), null)
         }) {
-            Text("a")
+            Text("NavigationBar")
         }
     }
 }
