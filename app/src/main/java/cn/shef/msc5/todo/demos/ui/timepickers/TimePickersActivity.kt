@@ -1,7 +1,9 @@
 package cn.shef.msc5.todo.demos.ui.timepickers
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -60,6 +62,10 @@ import java.util.Locale
  *  https://m3.material.io/components
  */
 class TimePickersActivity : ComponentActivity() {
+
+    private val TAG = "TimePickersActivity"
+
+    @SuppressLint("CoroutineCreationDuringComposition")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +82,7 @@ class TimePickersActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        var showTimePicker = remember { mutableStateOf(false) }
+                        var showTimePicker = remember { mutableStateOf(true) }
                         val state = rememberTimePickerState()
                         val formatter = remember { SimpleDateFormat("hh:mm a", Locale.getDefault()) }
                         val snackState = remember { SnackbarHostState() }
@@ -89,24 +95,23 @@ class TimePickersActivity : ComponentActivity() {
                             ) { Text("Set Time") }
                             SnackbarHost(hostState = snackState)
                         }
-
-//                        if (showTimePicker.value) {
-//
-//                        }
-                        TimePickerDialog(
-                            onCancel = { showTimePicker = mutableStateOf(false) },
-                            onConfirm = {
-                                val cal = Calendar.getInstance()
-                                cal.set(Calendar.HOUR_OF_DAY, state.hour)
-                                cal.set(Calendar.MINUTE, state.minute)
-                                cal.isLenient = false
-                                snackScope.launch {
-                                    snackState.showSnackbar("Entered time: ${formatter.format(cal.time)}")
-                                }
-                                showTimePicker = mutableStateOf(false)
-                            },
-                        ) {
-                            TimePicker(state = state)
+                        if (showTimePicker.value) {
+                            TimePickerDialog(
+                                onCancel = { showTimePicker = mutableStateOf(false) },
+                                onConfirm = {
+                                    val cal = Calendar.getInstance()
+                                    cal.set(Calendar.HOUR_OF_DAY, state.hour)
+                                    cal.set(Calendar.MINUTE, state.minute)
+                                    cal.isLenient = false
+                                    Log.v(TAG, "Entered time: ${formatter.format(cal.time)}")
+                                    snackScope.launch {
+                                        snackState.showSnackbar("Entered time: ${formatter.format(cal.time)}")
+                                    }
+                                    showTimePicker = mutableStateOf(false)
+                                },
+                            ) {
+                                TimePicker(state = state)
+                            }
                         }
                     }
                 }
@@ -141,6 +146,7 @@ fun TimeInputSample() {
                 cal.set(Calendar.HOUR_OF_DAY, state.hour)
                 cal.set(Calendar.MINUTE, state.minute)
                 cal.isLenient = false
+                Log.v("TimeInputSample", "Entered time: ${formatter.format(cal.time)}")
                 snackScope.launch {
                     snackState.showSnackbar("Entered time: ${formatter.format(cal.time)}")
                 }

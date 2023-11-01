@@ -61,11 +61,6 @@ class SplashActivity : ComponentActivity() {
             startActivity(intent)
             finish()
         }, DELAY_TIME)
-//        Handler().postDelayed({
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }, DELAY_TIME)
     }
 }
 

@@ -1,6 +1,5 @@
 package cn.shef.msc5.todo
 
-import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -18,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.WindowCompat
+import cn.shef.msc5.todo.demos.ui.navigation.NavigationBarActivity
 import cn.shef.msc5.todo.demos.ui.timepickers.TimePickersActivity
 
 /**
@@ -27,11 +28,13 @@ import cn.shef.msc5.todo.demos.ui.timepickers.TimePickersActivity
  */
 class MainActivity : ComponentActivity() {
 
-
     private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // This app draws behind the system bars, so we want to handle fitting system windows
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             MaterialTheme {
@@ -62,10 +65,15 @@ fun MainScreen() {
     Column {
         Button(onClick = {
             //jump to main activity
-            //context.startActivity(Intent(context, NavigationBarActivity::class.java))
-            startActivity(context, Intent(context, TimePickersActivity::class.java), null)
+            context.startActivity(Intent(context, NavigationBarActivity::class.java))
         }) {
             Text("NavigationBar")
+        }
+        Button(onClick = {
+            //jump to main activity
+            startActivity(context, Intent(context, TimePickersActivity::class.java), null)
+        }) {
+            Text("TimePicker")
         }
     }
 }
@@ -77,60 +85,3 @@ fun MainScreen() {
 fun PreviewMainScreen() {
     MainScreen()
 }
-
-//
-////@Preview
-//@Composable
-//fun OneLineListItem() {
-//    Column {
-//        ListItem(
-//            headlineContent = { Text("One line list item with 24x24 icon") },
-//            leadingContent = {
-//                Icon(
-//                    Icons.Filled.Favorite,
-//                    contentDescription = "Localized description",
-//                )
-//            }
-//        )
-//        Divider()
-//    }
-//}
-//
-////@Preview
-//@Composable
-//fun TwoLineListItem() {
-//    Column {
-//        ListItem(
-//            headlineContent = { Text("Two line list item with trailing") },
-//            supportingContent = { Text("Secondary text") },
-//            trailingContent = { Text("meta") },
-//            leadingContent = {
-//                Icon(
-//                    Icons.Filled.Favorite,
-//                    contentDescription = "Localized description",
-//                )
-//            }
-//        )
-//        Divider()
-//    }
-//}
-//
-////@Preview
-//@Composable
-//fun ThreeLineListItem() {
-//    Column {
-//        ListItem(
-//            headlineContent = { Text("Three line list item") },
-//            overlineContent = { Text("OVERLINE") },
-//            supportingContent = { Text("Secondary text") },
-//            leadingContent = {
-//                Icon(
-//                    Icons.Filled.Favorite,
-//                    contentDescription = "Localized description",
-//                )
-//            },
-//            trailingContent = { Text("meta") }
-//        )
-//        Divider()
-//    }
-//}
