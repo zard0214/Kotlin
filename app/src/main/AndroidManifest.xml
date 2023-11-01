@@ -35,6 +35,10 @@
             android:screenOrientation="portrait"
             android:exported="false"></activity>
         <activity
+            android:name=".demos.ui.timepickers.TimePickersActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"></activity>
+        <activity
             android:name=".demos.ui.appbars.TopAppBarActivity"
             android:screenOrientation="portrait"
             android:exported="false"></activity>
