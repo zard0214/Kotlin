@@ -23,6 +23,7 @@ class LifecycleActivity : ComponentActivity() {
         super.onStart()
         Log.v(TAG, " onStart")
     }
+
     override fun onResume() {
         super.onResume()
         Log.v(TAG, " onResume")
