@@ -6,7 +6,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -55,6 +60,7 @@ fun MainScreen() {
     }
 }
 
+
 @Preview(name = "Light theme")
 @Preview(name = "Dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
@@ -62,3 +68,58 @@ fun PreviewMainScreen() {
     MainScreen()
 }
 
+//@Preview
+@Composable
+fun OneLineListItem() {
+    Column {
+        ListItem(
+            headlineContent = { Text("One line list item with 24x24 icon") },
+            leadingContent = {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Localized description",
+                )
+            }
+        )
+        Divider()
+    }
+}
+
+//@Preview
+@Composable
+fun TwoLineListItem() {
+    Column {
+        ListItem(
+            headlineContent = { Text("Two line list item with trailing") },
+            supportingContent = { Text("Secondary text") },
+            trailingContent = { Text("meta") },
+            leadingContent = {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Localized description",
+                )
+            }
+        )
+        Divider()
+    }
+}
+
+//@Preview
+@Composable
+fun ThreeLineListItem() {
+    Column {
+        ListItem(
+            headlineContent = { Text("Three line list item") },
+            overlineContent = { Text("OVERLINE") },
+            supportingContent = { Text("Secondary text") },
+            leadingContent = {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Localized description",
+                )
+            },
+            trailingContent = { Text("meta") }
+        )
+        Divider()
+    }
+}

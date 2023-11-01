@@ -72,5 +72,7 @@ dependencies {
     debugImplementation("androidx.navigation:navigation-compose:$nav_version")
     val material3_version = "1.1.2"
     implementation("androidx.compose.material3:material3:$material3_version")
+    val swiperefreshlayout_version = "1.1.0"
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout_version")
 
 }
