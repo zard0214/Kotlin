@@ -3,7 +3,6 @@ package cn.shef.msc5.todo
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,13 +23,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cn.shef.msc5.todo.base.BaseScaffold
 import cn.shef.msc5.todo.base.BaseTopBar
+import cn.shef.msc5.todo.base.BaseActivity
 
 /**
  * @author Zhecheng Zhao
  * @email zzhao84@sheffield.ac.uk
  * @date Created in 02/11/2023 06:45
  */
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
 
     private val TAG = "MainActivity"
 
@@ -82,7 +82,6 @@ fun MainScreen(mainActivity: MainActivity) {
             }
         }
     )
-
 }
 
 
