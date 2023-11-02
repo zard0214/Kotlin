@@ -12,7 +12,7 @@ import cn.shef.msc5.todo.R
 
 /**
  * @author Zhecheng Zhao
- * @registrationNo 220186627
+ * @email zzhao84@sheffield.ac.uk
  * @date Created in 02/11/2023 08:16
  */
 @Composable

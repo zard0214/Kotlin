@@ -58,7 +58,7 @@ import java.util.Locale
 
 /**
  * @author Zhecheng Zhao
- * @registrationNo 220186627
+ * @email zzhao84@sheffield.ac.uk
  * @date Created in 31/10/2023 11:56
  *
  *  https://m3.material.io/components

@@ -6,7 +6,7 @@ import android.os.IBinder
 
 /**
  * @author Zhecheng Zhao
- * @registrationNo 220186627
+ * @email zzhao84@sheffield.ac.uk
  * @date Created in 31/10/2023 10:48
  */
 class LocationService : Service()  {

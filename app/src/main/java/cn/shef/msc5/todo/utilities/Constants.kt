@@ -1,10 +1,9 @@
 package cn.shef.msc5.todo.utilities
 
-import cn.shef.msc5.todo.R
 
 /**
  * @author Zhecheng Zhao
- * @registrationNo 220186627
+ * @email zzhao84@sheffield.ac.uk
  * @date Created in 31/10/2023 10:48
  *
  *      Constant Val

@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 
 /**
  * @author Zhecheng Zhao
- * @registrationNo 220186627
+ * @email zzhao84@sheffield.ac.uk
  * @date Created in 02/11/2023 08:07
  */
 @Composable
