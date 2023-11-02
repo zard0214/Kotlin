@@ -27,10 +27,12 @@ import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -73,17 +75,17 @@ class DatePickersActivity : ComponentActivity() {
 @Composable
 fun DatePicker(){
     val datePickerState = rememberDatePickerState()
-    val showDialog = rememberSaveable { mutableStateOf(true) }
-    if (showDialog.value) {
+    var showDialog by rememberSaveable { mutableStateOf(true) }
+    if (showDialog) {
         DatePickerDialog(
-            onDismissRequest = { showDialog.value = false },
+            onDismissRequest = { showDialog = false },
             confirmButton = {
-                TextButton(onClick = { showDialog.value = false }) {
+                TextButton(onClick = { showDialog = false }) {
                     Text("Ok")
                 }
             },
             dismissButton = {
-                TextButton(onClick = { showDialog.value = false }) {
+                TextButton(onClick = { showDialog = false }) {
                     Text("Cancel")
                 }
             }
@@ -103,9 +105,9 @@ fun DatePicker2(){
     val snackState = remember { SnackbarHostState() }
     val snackScope = rememberCoroutineScope()
     SnackbarHost(hostState = snackState, Modifier)
-    val openDialog = remember { mutableStateOf(true) }
+    var openDialog by remember { mutableStateOf(true) }
     // TODO demo how to read the selected date from the state.
-    if (openDialog.value) {
+    if (openDialog) {
         val datePickerState = rememberDatePickerState()
         val confirmEnabled = derivedStateOf { datePickerState.selectedDateMillis != null }
         DatePickerDialog(
@@ -113,12 +115,12 @@ fun DatePicker2(){
                 // Dismiss the dialog when the user clicks outside the dialog or on the back
                 // button. If you want to disable that functionality, simply use an empty
                 // onDismissRequest.
-                openDialog.value = false
+                openDialog = false
             },
             confirmButton = {
                 TextButton(
                     onClick = {
-                        openDialog.value = false
+                        openDialog = false
                         snackScope.launch {
                             snackState.showSnackbar(
                                 "Selected date timestamp: ${datePickerState.selectedDateMillis}"
@@ -133,7 +135,7 @@ fun DatePicker2(){
             dismissButton = {
                 TextButton(
                     onClick = {
-                        openDialog.value = false
+                        openDialog = false
                     }
                 ) {
                     Text("Cancel")
@@ -167,17 +169,17 @@ fun DateTimePickerExample() {
             TimePicker(state)
         }
 
-        var openDialog = remember { mutableStateOf(false) }
-        Button(onClick = { openDialog = mutableStateOf(true) }) {
+        var openDialog by remember { mutableStateOf(false) }
+        Button(onClick = { openDialog = true }) {
             Text("DatePickerDialog")
         }
-        if (openDialog.value) {
+        if (openDialog) {
             val state = rememberDatePickerState()
             DatePickerDialog(
-                onDismissRequest = { openDialog = mutableStateOf(false) },
+                onDismissRequest = { openDialog = false },
                 confirmButton = {
                     Button(onClick = {
-                        openDialog = mutableStateOf(false)
+                        openDialog = false
                         println("Selected date timestamp: ${state.selectedDateMillis}")
                     }) {
                         Text("Confirm")

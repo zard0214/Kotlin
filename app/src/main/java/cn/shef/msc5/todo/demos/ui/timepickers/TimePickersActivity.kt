@@ -38,9 +38,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.material3.TimePicker
 import androidx.compose.material3.rememberTimePickerState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.semantics.isContainer
 import androidx.compose.ui.semantics.semantics
@@ -124,7 +126,7 @@ class TimePickersActivity : ComponentActivity() {
 @Composable
 @Preview
 fun TimeInputSample() {
-    var showTimePicker = remember { mutableStateOf(false) }
+    var showTimePicker by remember { mutableStateOf(false) }
     val state = rememberTimePickerState()
     val formatter = remember { SimpleDateFormat("hh:mm a", Locale.getDefault()) }
     val snackState = remember { SnackbarHostState() }
@@ -133,14 +135,14 @@ fun TimeInputSample() {
     Box(propagateMinConstraints = false) {
         Button(
             modifier = Modifier.align(Alignment.Center),
-            onClick = { showTimePicker = mutableStateOf(true) }
+            onClick = { showTimePicker = true }
         ) { Text("Set Time") }
         SnackbarHost(hostState = snackState)
     }
 
-    if (showTimePicker.value) {
+    if (showTimePicker) {
         TimePickerDialog(
-            onCancel = { showTimePicker = mutableStateOf(false) },
+            onCancel = { showTimePicker = false },
             onConfirm = {
                 val cal = Calendar.getInstance()
                 cal.set(Calendar.HOUR_OF_DAY, state.hour)
@@ -150,7 +152,7 @@ fun TimeInputSample() {
                 snackScope.launch {
                     snackState.showSnackbar("Entered time: ${formatter.format(cal.time)}")
                 }
-                showTimePicker = mutableStateOf(false)
+                showTimePicker = false
             },
         ) {
             TimeInput(state = state)
@@ -162,26 +164,26 @@ fun TimeInputSample() {
 @Composable
 @Preview
 fun TimePickerSwitchableSample() {
-    var showTimePicker = remember { mutableStateOf(false) }
+    var showTimePicker by remember { mutableStateOf(false) }
     val state = rememberTimePickerState()
     val formatter = remember { SimpleDateFormat("hh:mm a", Locale.getDefault()) }
     val snackState = remember { SnackbarHostState() }
-    val showingPicker = remember { mutableStateOf(true) }
+    var showingPicker = remember { true }
     val snackScope = rememberCoroutineScope()
     val configuration = LocalConfiguration.current
 
     Box(propagateMinConstraints = false) {
         Button(
             modifier = Modifier.align(Alignment.Center),
-            onClick = { showTimePicker = mutableStateOf(true) }
+            onClick = { showTimePicker = true }
         ) { Text("Set Time") }
         SnackbarHost(hostState = snackState)
     }
 
-    if (showTimePicker.value) {
+    if (showTimePicker) {
         TimePickerDialog(
-            title = if (showingPicker.value) { "Select Time " } else { "Enter Time" },
-            onCancel = { showTimePicker = mutableStateOf(false) },
+            title = if (showingPicker) { "Select Time " } else { "Enter Time" },
+            onCancel = { showTimePicker = false },
             onConfirm = {
                 val cal = Calendar.getInstance()
                 cal.set(Calendar.HOUR_OF_DAY, state.hour)
@@ -190,7 +192,7 @@ fun TimePickerSwitchableSample() {
                 snackScope.launch {
                     snackState.showSnackbar("Entered time: ${formatter.format(cal.time)}")
                 }
-                showTimePicker = mutableStateOf(false)
+                showTimePicker = false
             },
             toggle = {
                 if (configuration.screenHeightDp > 400) {
@@ -207,15 +209,15 @@ fun TimePickerSwitchableSample() {
                                 .size(64.dp, 72.dp)
                                 .align(Alignment.BottomStart)
                                 .zIndex(5f),
-                            onClick = { showingPicker.value = !showingPicker.value }) {
-                            val icon = if (showingPicker.value) {
+                            onClick = { showingPicker = !showingPicker }) {
+                            val icon = if (showingPicker) {
                                 Icons.Outlined.KeyboardArrowDown
                             } else {
                                 Icons.Outlined.KeyboardArrowDown
                             }
                             Icon(
                                 icon,
-                                contentDescription = if (showingPicker.value) {
+                                contentDescription = if (showingPicker) {
                                     "Switch to Text Input"
                                 } else {
                                     "Switch to Touch Input"
@@ -226,7 +228,7 @@ fun TimePickerSwitchableSample() {
                 }
             }
         ) {
-            if (showingPicker.value && configuration.screenHeightDp > 400) {
+            if (showingPicker && configuration.screenHeightDp > 400) {
                 TimePicker(state = state)
             } else {
                 TimeInput(state = state)

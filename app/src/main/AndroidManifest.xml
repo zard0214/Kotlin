@@ -27,6 +27,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".demos.activity.DemoActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"></activity>
+        <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:exported="false"></activity>
@@ -36,6 +40,10 @@
             android:exported="false"></activity>
         <activity
             android:name=".demos.ui.timepickers.TimePickersActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"></activity>
+        <activity
+            android:name=".demos.ui.datepickers.DatePickersActivity"
             android:screenOrientation="portrait"
             android:exported="false"></activity>
         <activity
