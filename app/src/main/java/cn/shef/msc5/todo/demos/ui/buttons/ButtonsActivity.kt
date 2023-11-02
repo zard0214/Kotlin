@@ -46,6 +46,13 @@ class ButtonsActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    Button()
+                    ElevatedButton()
+                    FilledTonalButton()
+                    OutlinedButton()
+                    TextButton()
+                    IconButton()
+                    ExtendedFloatingActionButton()
                 }
             }
         }

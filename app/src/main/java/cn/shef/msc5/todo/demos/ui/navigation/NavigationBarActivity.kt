@@ -22,11 +22,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import cn.shef.msc5.todo.utilities.NAVIGATION_HOME
-import cn.shef.msc5.todo.utilities.NAVIGATION_POST
-import cn.shef.msc5.todo.utilities.NAVIGATION_PROFILE
+import cn.shef.msc5.todo.utilities.Constants.Companion.NAVIGATION_HOME
+import cn.shef.msc5.todo.utilities.Constants.Companion.NAVIGATION_POST
+import cn.shef.msc5.todo.utilities.Constants.Companion.NAVIGATION_PROFILE
 
 
 /**
@@ -44,7 +43,7 @@ class NavigationBarActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BottomNavigation()
+//                    BottomNavigation()
                     NavigationBarWithOnlySelected()
                 }
             }

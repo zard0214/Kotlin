@@ -43,6 +43,9 @@ class CardsActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    Card()
+                    ElevatedCard()
+                    OutlinedCard()
                 }
             }
         }

@@ -1,5 +1,7 @@
 package cn.shef.msc5.todo.utilities
 
+import cn.shef.msc5.todo.R
+
 /**
  * @author Zhecheng Zhao
  * @registrationNo 220186627
@@ -7,15 +9,20 @@ package cn.shef.msc5.todo.utilities
  *
  *      Constant Val
  */
-const val MODE = "Debug" // Debug, Release .....
+class Constants {
+    //companion object, sames like the static keyword in Java
+    companion object {
+//        const val MODE: String = R.string.mode.toString() // Debug, Release .....
 
-//navigation bar name
-const val NAVIGATION_HOME = "Home"
+        //navigation bar name
+        const val NAVIGATION_HOME = "Home"
 
-const val NAVIGATION_POST = "Post"
+        const val NAVIGATION_POST = "Post"
 
-const val NAVIGATION_PROFILE = "Profile"
+        const val NAVIGATION_PROFILE = "Profile"
 
 
-//delay times
-const val DELAY_TIME = 4000L
+        //delay times
+        const val DELAY_TIME = 4000L
+    }
+}

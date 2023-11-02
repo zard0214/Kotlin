@@ -40,6 +40,7 @@ class TopAppBarActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     LargeTopAppBar()
+//                    TopAppBar()
                 }
             }
         }
