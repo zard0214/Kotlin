@@ -2,10 +2,9 @@ package cn.shef.msc5.todo.demos.ui.navigation
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -22,7 +21,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
@@ -88,12 +86,17 @@ fun NavigationBarWithOnlySelected() {
                 icon = { Icon(getIconForScreen(item), contentDescription = null) },
                 label = { Text(item) },
                 selected = item == selectedItem,
-                onClick = { selectedItem = item },
+                onClick = {
+                    selectedItem = item
+                    Log.d("NavigationBarWithOnlySelected", item)
+                          },
                 alwaysShowLabel = false
             )
         }
     }
 }
+
+
 
 @Composable
 fun getIconForScreen(items: String): ImageVector {

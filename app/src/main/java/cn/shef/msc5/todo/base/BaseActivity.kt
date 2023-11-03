@@ -11,16 +11,15 @@ import androidx.activity.ComponentActivity
  */
 open class BaseActivity : ComponentActivity() {
 
-    private val TAG = "BaseActivity"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.v(this.localClassName, "onCreate")
 
     }
 
     override fun onStart() {
         super.onStart()
-        Log.v(TAG, "onStart")
+        Log.v(this.localClassName, "onStart")
         //TODO request permissions
 
     }

@@ -4,26 +4,28 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import cn.shef.msc5.todo.base.BaseScaffold
-import cn.shef.msc5.todo.base.BaseTopBar
 import cn.shef.msc5.todo.base.BaseActivity
+import cn.shef.msc5.todo.base.EmptyScreen
+import cn.shef.msc5.todo.demos.ui.navigation.getIconForScreen
+import cn.shef.msc5.todo.utilities.Constants.Companion.NAVIGATION_HOME
+import cn.shef.msc5.todo.utilities.Constants.Companion.NAVIGATION_POST
+import cn.shef.msc5.todo.utilities.Constants.Companion.NAVIGATION_PROFILE
 
 /**
  * @author Zhecheng Zhao
@@ -32,11 +34,10 @@ import cn.shef.msc5.todo.base.BaseActivity
  */
 class MainActivity : BaseActivity() {
 
-    private val TAG = "MainActivity"
+    val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.v(TAG, "onCreate")
         setContent {
             MaterialTheme {
                 // A surface container using the 'background' color from the theme
@@ -52,36 +53,45 @@ class MainActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.v(TAG, "onStart")
         //TODO request permissions
-
+        Log.d(TAG, "onStart: ")
     }
 
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(mainActivity: MainActivity) {
     //get context
     val context = LocalContext.current
-    BaseScaffold (
-        topBar = {
-            BaseTopBar(mainActivity)
-        },
-        content = {
-            ElevatedButton(
-                onClick = { /*TODO*/ }
-            ) {
-                Icon( // adds Icon in button
-                    imageVector = Icons.Outlined.Add,
-                    contentDescription = "Add",
-                    modifier = Modifier.size(18.dp)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "Elevated Button")
+    val items = listOf(
+        NAVIGATION_HOME,
+        NAVIGATION_POST,
+        NAVIGATION_PROFILE
+    )
+    var selectedItem by remember { mutableStateOf(items.first()) }
+    BaseScaffold(
+        bottomBar = {
+            NavigationBar {
+                items.forEachIndexed { index, item ->
+                    NavigationBarItem(
+                        icon = { Icon(getIconForScreen(item), contentDescription = null) },
+                        label = { Text(item) },
+                        selected = item == selectedItem,
+                        onClick = {
+                            selectedItem = item
+                        },
+                        alwaysShowLabel = false
+                    )
+                }
             }
         }
-    )
+    ) {
+        when (selectedItem) {
+            NAVIGATION_HOME -> EmptyScreen()
+            NAVIGATION_POST -> EmptyScreen()
+            NAVIGATION_PROFILE -> EmptyScreen()
+        }
+    }
 }
 
 
